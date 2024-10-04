@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+          crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div class>
+</div>
+<div id="content">
+    <main>
+
+
+        <div class="page-header text-center">
+            <h2 style="text-align: center;">Nueva Pelicula</h2>
+        </div>
+        <div class="container-fluid">
+            <form method="POST" th:action="@{/movieMaster/save}" th:object="${pelicula}">
+
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre de la película</label>
+                    <input type="text"  class="form-control" th:field="*{titulo}" th:classappend="${#fields.hasErrors('titulo')?'is-invalid':''}"/>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">fechaEstreno</label>
+                    <input type="date" class="form-control" th:field="*{fechaEstreno}" th:classappend="${#fields.hasErrors('fechaEstreno')?'is-invalid':''}"/>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaEstreno')}" th:errors="*{titulo}"></div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">duraciónMinutos</label>
+                    <input type="number" class="form-control"th:field="*{duracionMinutos}" th:classappend="${#fields.hasErrors('duracionMinutos')?'is-invalid':''}"/>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('duracionMinutos')}" th:errors="*{duracionMinutos}"></div>
+                </div>
+
+                <a th:href="@{/movieMaster/list}" class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</html>
